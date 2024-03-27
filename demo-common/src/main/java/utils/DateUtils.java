@@ -24,10 +24,10 @@ public class DateUtils {
     }
 
     public static void main(String[] args) throws ParseException {
-        String time = "2024年03月23 21:59:59";
+        String time = "2024年03月31 23:59:59";
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd HH:mm:ss");
         Date parse = sdf.parse(time);
-        boolean sendMsg = isSendMsg(3, new Date(), parse);
+        boolean sendMsg = isSendMsg(8, new Date(), parse);
         System.out.println(sendMsg);
     }
 }

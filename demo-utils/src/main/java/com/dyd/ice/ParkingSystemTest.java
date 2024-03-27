@@ -2,15 +2,15 @@ package com.dyd.ice;
 
 import IceExt.IceClientUtil;
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.google.common.collect.Sets;
 import segi.common.organ.COrginfoIQueryRpcClient;
 import segi.datacachesvr.queryCustomInfo.CCustomInfoIPrx;
 import segi.datacachesvr.queryInfo.*;
 import segi.datacachesvr.queryparkingsys.ParkingSystemIPrx;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author ：duyd@segimail.com
@@ -29,9 +29,11 @@ public class ParkingSystemTest {
     private static CCustomInfoIPrx getCCustomInfoIPrx() {return IceClientUtil.getServicePrxByClass(CCustomInfoIPrx .class);}
 
     private static CCommunityIPrx getCCommunityIPrx() {return IceClientUtil.getServicePrxByClass(CCommunityIPrx.class);}
-
+    private static COrginfoIPrx getCOrginfoIPrx() {
+        return IceClientUtil.getServicePrxByClass(COrginfoIPrx.class);
+    }
     public static void main(String[] args) {
-        reqPayDictInfoByOpts reqPayDictInfoByOpts = new reqPayDictInfoByOpts();
+        // reqPayDictInfoByOpts reqPayDictInfoByOpts = new reqPayDictInfoByOpts();
         //reqPayDictInfoByOpts.setDictCode();
         /*reqPayDictInfoByOpts.setDictType("PAY_METHOD");
         retPayDictInfoByOpts retPayDictInfoByOpts = getCCommonIPrx().queryPayDictInfoByOpts(reqPayDictInfoByOpts, 0, 1);
@@ -61,8 +63,28 @@ public class ParkingSystemTest {
         BigDecimal ab = new BigDecimal("100");
         System.out.println(ab.add(new BigDecimal("100")));*/
 
-        List<Map> position = getPosition();
-        System.out.println(JSON.toJSONString(position));
+        /*List<Map> position = getPosition();
+        System.out.println(JSON.toJSONString(position));*/
+        /*Set<Long> communityIds = Sets.newHashSet();
+        retOrganListPageInfo retOrganListPageInfo = getCOrginfoIPrx().queryVirtualOrganListByOrganId(1000279, 1, 10000);
+        if (retOrganListPageInfo.code == 0 && retOrganListPageInfo.data.length > 0) {
+            long[] organIds = Arrays.stream(retOrganListPageInfo.data).mapToLong(TOrganInfo::getOrganId).toArray();
+            retOrganCommunityList retOrganCommunityList = getCOrginfoIPrx().queryCommunityListByOrganIds(organIds, 0, 1);
+            if (retOrganCommunityList.code == 0 && retOrganCommunityList.data.length > 0) {
+                for (organCommunity datum : retOrganCommunityList.data) {
+                    for (long subCommunity : datum.getSubCommunitys()) {
+                        communityIds.add(subCommunity);
+                    }
+                }
+            }
+        }
+
+        System.out.println(communityIds);*/
+        Map map = JSONObject.parseObject("{\"cardId\":110011207,\"parentOrganIds\":[1000626],\"communityIds\":[67]}", Map.class);
+        System.out.println((JSONArray)map.get("parentOrganIds"));
+        Integer[] kp = {112,334};
+        map.put("communityIds",kp);
+        System.out.println((Integer[])map.get("communityIds"));
     }
 
     public static List<Map> getPosition(){
