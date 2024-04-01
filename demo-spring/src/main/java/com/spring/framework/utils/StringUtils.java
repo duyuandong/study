@@ -17,4 +17,8 @@ public class StringUtils {
         String methodName = "set" + fieldName.substring(0,1).toUpperCase() + fieldName.substring(1);
         return methodName;
     }
+
+    public static void main(String[] args) {
+        System.out.println(getSetterMethodFieldName("Users"));
+    }
 }

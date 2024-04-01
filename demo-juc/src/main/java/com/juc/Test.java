@@ -1,9 +1,9 @@
-package com.dyd.jucs;
+package com.juc;
 
 /**
  * @author ：duyd@segimail.com
- * @class ：com.dyd.jucs.Test
- * @date ：Created in 2024/4/1 10:40
+ * @class ：com.juc.Test
+ * @date ：Created in 2024/4/1 11:44
  * @description：
  * @modified By：
  * @version:
