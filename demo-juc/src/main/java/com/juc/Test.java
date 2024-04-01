@@ -10,6 +10,8 @@ package com.juc;
  */
 public class Test {
     public static void main(String[] args) {
+        //cpu线程核心
         System.out.println(Runtime.getRuntime().availableProcessors());
+        System.out.println((int)(Runtime.getRuntime().freeMemory() / 1024 / 1024) + "M");
     }
 }
