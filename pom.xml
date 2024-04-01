@@ -16,6 +16,7 @@
         <module>demo-common</module>
         <module>demo-utils</module>
         <module>demo-web</module>
+        <module>demo-juc</module>
     </modules>
 
     <properties>
