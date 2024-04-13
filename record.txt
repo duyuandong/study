@@ -261,8 +261,8 @@ jar -xvf ROOT.war
 git操作
 $ git branch -d <BranchName> 删除本地分支
 merge into current 将远程的合并到当前
-			
-mq地址：http://192.168.1.188:12581/#/topic
+		
+mq地址：http://192.168.1.38:8080/rocketmq-console/#/
 saasb:	http://10.29.216.180:7172/rocketmq-console/#/message 
 beta:	https://beta.uhomecp.com/rocketmq-console/#/message
 
