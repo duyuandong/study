@@ -9,6 +9,7 @@ import com.dyd.pojo.PropertyParkingPayNotifyReqDto;
 import com.google.common.collect.Lists;
 import com.google.gson.JsonArray;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -29,16 +30,19 @@ public class FunctionTesg {
         Consumer<PropertyParkingPayNotifyBill> function = list -> {
             String acctItemId = list.getAcctItemId();
             if("q1".equals(acctItemId)){
-                return;
+                throw new RuntimeException("ds");
             }
             System.out.println(acctItemId+"执行吗");
         };
-        for (PropertyParkingPayNotify ppn : pppfr.getPayList()) {
+        /*for (PropertyParkingPayNotify ppn : pppfr.getPayList()) {
             for (PropertyParkingPayNotifyBill pppnb : ppn.getBillList()) {
                 System.out.println("pppnb--->"+pppnb.getAcctItemId());
                 function.accept(pppnb);
             }
             System.out.println("ppn--->"+ppn.getPaySerialNbr());
-        }
+        }*/
+
+        BigDecimal monthFee = new BigDecimal("200").multiply(new BigDecimal("100")).divide(new BigDecimal("3"), 0, BigDecimal.ROUND_DOWN);
+        System.out.println(monthFee);
     }
 }
