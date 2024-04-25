@@ -20,6 +20,16 @@ public class JsonPojo {
 
   private Date dql;
 
+  private Object data;
+
+  public Object getData() {
+    return data;
+  }
+
+  public void setData(Object data) {
+    this.data = data;
+  }
+
   public Date getDql() {
     return dql;
   }
@@ -50,6 +60,9 @@ public class JsonPojo {
 
   public void setTelNo(String telNo) {
     this.telNo = telNo;
+  }
+
+  public JsonPojo() {
   }
 
   public JsonPojo(Integer id, String username, String telNo) {

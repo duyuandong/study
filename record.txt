@@ -286,4 +286,4 @@ jstat -gc 1 1000
  -XX:+PrintGCDetails -Xloggc:/opt/logs/gc.log -verbose:gc -XX:+DisableExplicitGC"
 
 
-
+=CONCATENATE("INSERT INTO equipment_dt_template (dt_template_id, dt_template_name, dt_template_desc, organ_id, detail_del_flag, check_flag, community_id, dt_type) VALUES (",A2,",'",E2,"','",I2,"',",B2,",",IF(F2="不可调整","1","0"),",",IF(G2="启用","1","0"),",",C2,",",IF(H2="保养","'2000'",IF(H2="全部","'1000'","''")),");")

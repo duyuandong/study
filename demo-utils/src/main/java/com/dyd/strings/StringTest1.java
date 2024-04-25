@@ -2,12 +2,17 @@ package com.dyd.strings;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.dyd.exception.ParkingException;
 import com.dyd.pojo.JsonPojo;
+import com.dyd.pojo.RequestData;
+import com.dyd.utils.DateUtils;
 import com.google.common.collect.Lists;
 import org.apache.commons.lang3.StringUtils;
+import segi.datacachesvr.queryparkingsys.stuParkingSystem;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -50,5 +55,22 @@ public class StringTest1 {
                 .divide(new BigDecimal("3"),2,BigDecimal.ROUND_DOWN)
                 .multiply(new BigDecimal("100")).intValue();
         System.out.println(monthRate);
+
+
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("sss",1992);
+        jsonObject.put("zzz","ssss");
+        RequestData ac = getRequestData("ac", jsonObject);
+        System.out.println(JSON.toJSONString(ac));
+        jsonObject.put("kkk","kiss me");
+        System.out.println(JSON.toJSONString(ac));
+    }
+
+
+    public static RequestData getRequestData( String action, Object data) {
+        RequestData requestData = new RequestData();
+        requestData.setAction(action);
+        requestData.setData(data);
+        return requestData;
     }
 }
